@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 export function sendNotification(job) {
   notifier.notify({
-    title: `🚀 New Remote Job: ${job.company}`,
+    title: `New Remote Job: ${job.company}`,
     message: `${job.role}\nLocation: ${job.location}\nPosted: ${job.age} ago`,
     sound: true,
     wait: false,
@@ -25,7 +25,7 @@ export function sendNotifications(jobs) {
 
   if (jobs.length > 5) {
     notifier.notify({
-      title: '🎯 Multiple New Remote Jobs!',
+      title: 'Multiple New Remote Jobs!',
       message: `Found ${jobs.length} new remote positions. Check console for details.`,
       sound: true,
       wait: false,

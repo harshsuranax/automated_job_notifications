@@ -124,8 +124,8 @@ function formatJobsHTML(jobs) {
           <div class="job-header">${index + 1}. ${job.role}</div>
           <div class="job-company">🏢 ${job.company}</div>
           <div class="job-details">
-            📍 <strong>Location:</strong> ${job.location}<br>
-            📅 <strong>Posted:</strong> ${job.age} ago
+            <strong>Location:</strong> ${job.location}<br>
+            <strong>Posted:</strong> ${job.age} ago
           </div>
           <a href="${applicationUrl}" class="apply-button">Apply Now</a>
         </div>
@@ -181,7 +181,7 @@ export async function sendEmailNotification(jobs) {
 
     const subject = jobs.length === 0
       ? 'Remote Jobs Update - No New Positions'
-      : `🚀 ${jobs.length} New Remote Job${jobs.length === 1 ? '' : 's'} - Last 2 Days`;
+      : `${jobs.length} New Remote Job${jobs.length === 1 ? '' : 's'} - Last 2 Days`;
 
     const mailOptions = {
       from: `"Job Scraper" <${config.fromEmail}>`,
@@ -191,13 +191,13 @@ export async function sendEmailNotification(jobs) {
       html: formatJobsHTML(jobs),
     };
 
-    console.log(`\n📧 Sending email to ${config.toEmail}...`);
+    console.log(`\nSending email to ${config.toEmail}...`);
     const info = await transporter.sendMail(mailOptions);
-    console.log(`✅ Email sent successfully! Message ID: ${info.messageId}`);
+    console.log(`Email sent successfully! Message ID: ${info.messageId}`);
 
     return info;
   } catch (error) {
-    console.error('❌ Error sending email:', error.message);
+    console.error('Error sending email:', error.message);
     throw error;
   }
 }
@@ -209,10 +209,10 @@ export async function testEmailConfig() {
 
     console.log('Testing email configuration...');
     await transporter.verify();
-    console.log('✅ Email configuration is valid!');
+    console.log('Email configuration is valid!');
     return true;
   } catch (error) {
-    console.error('❌ Email configuration test failed:', error.message);
+    console.error('Email configuration test failed:', error.message);
     return false;
   }
 }
